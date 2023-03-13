@@ -3,20 +3,17 @@
   import { useZodValidator } from "../../validator/use-zod-validation"
   import InputField from "../base/input-field.svelte"
 
-  const { validation, errors } = useZodValidator(zProfileText)
+  const { validation, errors, invalid } = useZodValidator(zProfileText)
 
   // input要素の値（bind:valueしておけば入力操作によって自動的に更新される）
   let value = ""
-
-  // aria-invalidの値（errorsが変化すれば自動的に更新される）
-  $: invalid = $errors.length > 0
 </script>
 
 <InputField label="自己紹介" description="20字以上120文字以下" errors={$errors} required>
   <textarea
     name="profile"
     required
-    aria-invalid={invalid}
+    aria-invalid={$invalid}
     on:blur={() => validation(value)}
     bind:value
   />
