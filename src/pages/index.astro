@@ -1,8 +1,9 @@
 ---
+import ProfileFormV2 from "../components/profile-form-v2.svelte"
 import ProfileForm from "../components/profile-form.svelte"
 import BaseHtml from "../layout/base-html.astro"
 ---
 
 <BaseHtml title="社員プロフィール編集">
-  <ProfileForm client:load />
+  <ProfileFormV2 client:load />
 </BaseHtml>
